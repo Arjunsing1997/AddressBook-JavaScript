@@ -160,7 +160,7 @@ function AddContactToArray()
     addressBook.push(new Contact("Karan", "Wooj", "Nagarbhavi", "Mangalore", "Mumbai", "588678", "91 8765432345", "karan@gmail.com"));
     addressBook.push(new Contact("Disha", "Madasn", "Graden", "Gubbi", "Andhra", "593678", "91 9842123456", "disha@gmail.com"));
     addressBook.push(new Contact("Rohan", "Sharma", "Bandish", "Bandits", "Rajasthan", "532678", "91 7854567890", "rohan@gmail.com"));
-    addressBook.push(new Contact("Darshan", "Yadav", "Euphoria", "Zendaya", "ZacEffron", "510236", "91 8765432720", "yadavdarshan@gmail.com"));
+    //addressBook.push(new Contact("Darshan", "Yadav", "Euphoria", "Zendaya", "ZacEffron", "510236", "91 8765432720", "yadavdarshan@gmail.com"));
     addressBook.forEach(contact=>console.log(contact.toString()));
 }
 
@@ -189,5 +189,8 @@ AddContactToArray();
 //Editing Data
 Edit();
 //Deleting Data
-DeleteContact("Arjun","Raj");
-AddContactToArray();
+DeleteContact("Karan","Wooj");
+
+//UC6 finding out the size of array using reduce function
+let addressBookCount= addressBook.reduce((count,_contact)=>count= count+1,0);
+console.log("Count of address book contacts are : "+addressBookCount);
