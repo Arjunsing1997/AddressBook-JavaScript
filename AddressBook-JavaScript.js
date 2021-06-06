@@ -170,5 +170,24 @@ function Edit()
     addressBook.forEach(contact=>console.log(contact.toString()));
 }
 
+//UC5 Deleting Contact
+
+function DeleteContact(firstName, lastName)
+{
+    for(let index = 0; index < addressBook.length; index++)
+    {
+        if(addressBook[index].firstName == firstName && addressBook[index].lastName==lastName)
+        {
+            //splice method removes item from an array by taking index value
+            addressBook.splice(index,1);
+            console.log("Contact Deleted Successfully");
+        }
+    }   
+}
+//Printing All Data
 AddContactToArray();
+//Editing Data
 Edit();
+//Deleting Data
+DeleteContact("Arjun","Raj");
+AddContactToArray();
