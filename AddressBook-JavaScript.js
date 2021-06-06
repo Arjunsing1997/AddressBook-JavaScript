@@ -25,7 +25,8 @@ class Contact{
         let nameRegex= RegExp('^[A-Z]{1}[a-z]{2,}$');
         if(nameRegex.test(firstName))
             this._firstName= firstName;
-        else throw "Invalid firstname";
+        else 
+            throw "Invalid firstname";
     }
 
     get lastName()
@@ -122,23 +123,52 @@ class Contact{
     //To string method for displaying contacts
     toString()
     {
-        return "FirstName: " + this.firstName + "\nLastName: " + this.lastName + "\nAddress : " + this.address + "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhoneNumber : " + this.phoneNumber + "\nEmail : " + this.email;
+        console.log("----------------------------");
+        return "FirstName: " + this.firstName + 
+        "\nLastName: " + this.lastName + 
+        "\nAddress : " + this.address + 
+        "\nCity : " + this.city + 
+        "\nState : " + this.state + 
+        "\nZip : " + this.zip + 
+        "\nPhoneNumber : " + this.phoneNumber + 
+        "\nEmail : " + this.email;
+        
     }
 }
 
 // UC 3 : New address book array to store contacts
 let addressBook = new Array();
-try {
+
+function AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email)
+{
+    try
+    {
+        let newcontact = new contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        addressBook.push(newcontact);    
+    }
+    catch(e)
+    {
+        console.error(e);
+    }
+}
+function AddContactToArray()
+{
     console.log("Hello, Welcome To Address Book Using Javascript!")
     contact = new Contact("Arjun","Raj","Vijaynagar","Bangalore","Karnataka","567678","91 9898989898","arjun@gmail.com");
     //appends into array
     addressBook.push(contact);
-    addressBook.push(new Contact("karan", "Wooj", "Nagarbhavi", "Mangalore", "Mumbai", "588678", "91 8765432345", "karan@gmail.com"));
-    addressBook.push(new Contact("Disha", "Madan", "Graden", "Gubbi", "Andhra", "593678", "91 9842123456", "disha@gmail.com"));
+    addressBook.push(new Contact("Karan", "Wooj", "Nagarbhavi", "Mangalore", "Mumbai", "588678", "91 8765432345", "karan@gmail.com"));
+    addressBook.push(new Contact("Disha", "Madasn", "Graden", "Gubbi", "Andhra", "593678", "91 9842123456", "disha@gmail.com"));
     addressBook.push(new Contact("Rohan", "Sharma", "Bandish", "Bandits", "Rajasthan", "532678", "91 7854567890", "rohan@gmail.com"));
     addressBook.push(new Contact("Darshan", "Yadav", "Euphoria", "Zendaya", "ZacEffron", "510236", "91 8765432720", "yadavdarshan@gmail.com"));
     addressBook.forEach(contact=>console.log(contact.toString()));
 }
-catch (e) {
-    console.error(e);
+
+function Edit()
+{
+    addressBook.filter(contact=>contact.firstName=="Ramya"&& contact.lastName =="Uday").forEach(contact=>{contact.address ="DamohNaka"; contact.city="Bangalore"; contact.state="Karnataka"});
+    addressBook.forEach(contact=>console.log(contact.toString()));
 }
+
+AddContactToArray();
+Edit();
